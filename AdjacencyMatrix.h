@@ -5,6 +5,7 @@ using namespace std;
 
 class AdjacencyMatrix {
     // private variables etc
+    //testing push abilities
 
 public:
     class Iterator;
