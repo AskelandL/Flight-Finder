@@ -1,21 +1,21 @@
 #pragma once
 #include "Definitions.h"
 #include <vector>
+#include <array>
 using namespace std;
 
 class AdjacencyMatrix {
-    // private variables etc
-    //testing push abilities
+    
+private:
+    int numVert;
+    int myMatrix[][];
 
 public:
-    class Iterator;
-    void insertEdge(int from, int to, int weight);
-    vector<int> getAdjacent(int vertex);
-
-    class Iterator{
-        // private variables etc
-    public:
-        Iterator(const AdjacencyMatrix& graph);
-        Iterator& operator++();
+    AdjacencyMatrix(int m, int n);
+    ~AdjacencyMatrix();
+    void insertRoute(int from, int to, int weight);
+    void removeRoute(int from, int to, int weight);
+    void displayMatrix();
+    bool isRoute(int from, int to);
     };
 };
