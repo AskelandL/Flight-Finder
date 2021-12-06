@@ -1,13 +1,24 @@
 #include "findPath.h"
 #include "Random.h"
 #include "Display.h"
+#include "AdjacencyMatrix.h"
 
 // main file where everything is tied together
 
 int main() {
     // create instance
     // go through loop NODE times and insert node
+    int numAirports = 10000;
+    int flightTime;
+    int operation;
+    AdjacencyMatrix myMatrix(numAirports, numAirports);
 
+    for (int i = 0; i < numAirports) {
+        for (int j = 0; j < numAirport; j++) {
+            flightTime = Random(); //ask how to call random number
+;            myMatrix.insertRoute(i, j, flightTime);
+        }
+    }
 
     // call Display
     sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Flight Finder");
