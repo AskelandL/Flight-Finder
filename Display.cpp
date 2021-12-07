@@ -93,28 +93,16 @@ Fastest::Fastest() {
 	depart = TextBox(true, "", (SCREEN_WIDTH/4) - (BUTTON_WIDTH/2) - BUTTON_BORDER, BUTTON_HEIGHT/2);
 	arrive = TextBox(true, "", (SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), BUTTON_HEIGHT / 2);
 	exit = Button("exitBtn", BUTTON_BORDER + (3*SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2), BUTTON_HEIGHT / 2);
-	// deText
-	deText.setFont(TextureManager::GetFont(FONT));
-	deText.setString("DEPARTING");
-	deText.setCharacterSize(TEXT_HEIGHT); // in pixels, not points!
-	deText.setFillColor(sf::Color::White);
-	deText.setStyle(sf::Text::Bold);
-	deText.setPosition((SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2) - BUTTON_BORDER, BUTTON_BORDER/2);
-	// arrText
-	arrText.setFont(TextureManager::GetFont(FONT));
-	arrText.setString("ARRIVING");
-	arrText.setCharacterSize(TEXT_HEIGHT); // in pixels, not points!
-	arrText.setFillColor(sf::Color::White);
-	arrText.setStyle(sf::Text::Bold);
-	arrText.setPosition((SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), BUTTON_BORDER / 2);
+	deText = TextWrap("DEPARTING", (SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2) - BUTTON_BORDER, BUTTON_BORDER / 2);
+	arrText = TextWrap("ARRIVING", (SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), BUTTON_BORDER / 2);
 }
 
 void Fastest::Draw(sf::RenderWindow& window) {
 	depart.Draw(window);
 	arrive.Draw(window);
 	exit.Draw(window);
-	window.draw(deText);
-	window.draw(arrText);
+	deText.Draw(window);
+	arrText.Draw(window);
 }
 
 bool Fastest::Click(int x, int y) {

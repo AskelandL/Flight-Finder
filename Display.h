@@ -18,11 +18,12 @@ public:
 	int Click(int x, int y);  // 0 no change, 1 Fastest, 2 display
 };
 
+
 class Fastest {
 	TextBox depart;
 	TextBox arrive;
-	sf::Text deText;
-	sf::Text arrText;
+	TextWrap deText;
+	TextWrap arrText;
 	Button exit;
 public:
 	Fastest();

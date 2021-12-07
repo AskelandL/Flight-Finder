@@ -105,3 +105,36 @@ void TextBox::addText(char letter) {
 	}
 	SetText(name);
 }
+
+// TEXTWRAP
+
+void TextWrap::SetText(string name) {
+	this->name = name;
+	text.setFont(TextureManager::GetFont(FONT));
+	text.setString(name);
+	text.setCharacterSize(TEXT_HEIGHT); // in pixels, not points!
+	text.setFillColor(sf::Color::White);
+	text.setStyle(sf::Text::Bold);
+}
+
+TextWrap::TextWrap() {
+	name = "";
+	x = 0;
+	y = 0;
+}
+
+TextWrap::TextWrap(string name, int x, int y) {
+	this->x = x;
+	this->y = y;
+	SetText(name);
+	text.setPosition(x, y);
+}
+
+void TextWrap::Draw(sf::RenderWindow& window) {
+	window.draw(text);
+}
+
+void TextWrap::addText(string letters) {
+	name += letters;
+	SetText(name);
+}
