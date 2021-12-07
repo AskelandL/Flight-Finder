@@ -9,7 +9,7 @@ AdjacencyMatrix::AdjacencyMatrix(int m, int n)
 AdjacencyMatrix::~AdjacencyMatrix()
 {
 	for (int i = 0; i < numVert; i++) {
-		delete[] myMatrix[i];
+		delete myMatrix.at(i);
 	}
 	delete[] myMatrix[];
 }

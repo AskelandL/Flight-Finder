@@ -8,7 +8,7 @@ class AdjacencyMatrix {
 
 private:
     int numVert;
-    int myMatrix[][];
+    vector<vector<int>> myMatrix;
 
 public:
     AdjacencyMatrix(int m, int n);

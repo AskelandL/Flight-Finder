@@ -8,21 +8,19 @@
 int main() {
     // create instance
     // go through loop NODE times and insert node
-//    int numAirports = 10000;
-//    int flightTime;
-//    int operation;
-//    AdjacencyMatrix myMatrix(numAirports, numAirports);
-//
-//    for (int i = 0; i < numAirports) {
-//        for (int j = 0; j < numAirport; j++) {
-//            flightTime = Random(); //ask how to call random number
-//;            myMatrix.insertRoute(i, j, flightTime);
-//        }
-//    }
+    int flightTime;
+    AdjacencyMatrix myMatrix(NODES, NODES);
+
+    for (int i = 0; i < NODES; i++) {
+        for (int j = 0; j < NODES; j++) {
+            flightTime = Random::Int(1,9); //ask how to call random number
+            myMatrix.insertRoute(i, j, flightTime);
+        }
+    }
 
     // call Display
     sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Flight Finder");
-    Display d = Display();
+    Display d = Display(); // should take in AdjacencyMatrix
 
     while (window.isOpen())
     {
@@ -32,7 +30,7 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 TextureManager::Clear();
                 window.close();
-                return 1;
+                return 0;
             }
             else if (event.type == sf::Event::KeyPressed) {
                 d.Type(event.key.code);
@@ -49,5 +47,5 @@ int main() {
         window.display();
     }
 
-    return 1;
+    return 0;
 }
