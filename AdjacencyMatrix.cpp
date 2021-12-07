@@ -2,7 +2,7 @@
 
 AdjacencyMatrix::AdjacencyMatrix(int m, int n)
 {
-	myMatrix = new int[m][n];
+	myMatrix.resize(m, vector<int> (n, 0));
 	numVert = m;
 }
 
@@ -17,13 +17,11 @@ AdjacencyMatrix::~AdjacencyMatrix()
 void AdjacencyMatrix::insertRoute(int from, int to, int weight)
 {
 	myMatrix[from][to] = weight;
-	myMatrix[to][from] = weight;
 }
 
 void AdjacencyMatrix::removeRoute(int from, int to, int weight)
 {
 	myMatrix[from][to] = 0;
-	myMatrix[to][from] = 0;
 }
 
 void AdjacencyMatrix::displayMatrix()
@@ -37,24 +35,14 @@ void AdjacencyMatrix::displayMatrix()
 			}
 			cout << "\n";
 		}
-
-	//iterates through graph and prints potential route connections
-	for (int i = 0;i < numVert; i++) {
-		cout << "airport" << i << " connects to airports: ";
-		for (int j = 0; j < numVert; j++) {
-			if (myMatrix[i][j]) != 0 ) {
-			cout << j << " ";
-			}
-		}
-		cout << "\n";
-	}
 }
 
-void AdjacencyMatrix::displayMatrix(int from, int to ) {
+//show nodes connected to one specified airport
+void AdjacencyMatrix::displayAirport(int from, int to ) {
 
-	for (int i = 0;i < numVert; i++) {
+	for (int i = from;i < to; i++) {
 		cout << "airport" << i << " connects to airports: ";
-		for (int j = 0; j < numVert; j++) {
+		for (int j = from; j < to; j++) {
 			if (myMatrix[i][j]) != 0 ) {
 			cout << j << " ";
 			}

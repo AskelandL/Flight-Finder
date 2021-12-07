@@ -13,7 +13,7 @@ int main() {
 
     for (int i = 0; i < NODES; i++) {
         for (int j = 0; j < NODES; j++) {
-            flightTime = Random::Int(1,9); //ask how to call random number
+            flightTime = Random::Int(1,9); 
             myMatrix.insertRoute(i, j, flightTime);
         }
     }
