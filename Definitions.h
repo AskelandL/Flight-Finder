@@ -8,11 +8,11 @@
 // Display
 #define SCREEN_WIDTH 1600
 #define SCREEN_HEIGHT 800
-#define BACK_COLOR sf::Color::Cyan
-#define BUTTON_HEIGHT 300
+#define BACK_COLOR sf::Color::Blue
+#define BUTTON_HEIGHT 200
 #define BUTTON_WIDTH 400
 #define LEFT_BORDER 200
 
 
 #define FONT "bahnschrift"
-#define BUTTON_BORDER 100
+#define BUTTON_BORDER 50

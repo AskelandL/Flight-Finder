@@ -56,9 +56,9 @@ void TextBox::SetText(string name) {
 	this->name = name;
 	text.setFont(TextureManager::GetFont(FONT));
 	text.setString(name);
-	text.setCharacterSize(24); // in pixels, not points!
-	text.setFillColor(sf::Color::Black);
-	text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+	text.setCharacterSize(100); // in pixels, not points!
+	text.setFillColor(sf::Color::White);
+	text.setStyle(sf::Text::Bold);
 }
 
 void TextBox::Draw(sf::RenderWindow& window) {

@@ -44,7 +44,7 @@ StartScreen::StartScreen() {
 	fastestBtn = Button("fastestBtn", (SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2), SCREEN_HEIGHT/2);
 	visualBtn = Button("displayBtn", (3*SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2), SCREEN_HEIGHT/2);
 	credBtn = Button("creditsBtn", (SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 3*SCREEN_HEIGHT / 4);
-	djik = Button("djikBtn", (SCREEN_WIDTH/2)-(BUTTON_WIDTH/2), SCREEN_HEIGHT/4);
+	djik = Button("djikBtn", (SCREEN_WIDTH/2)-(BUTTON_WIDTH/2), SCREEN_HEIGHT/2);
 	credits.setTexture(TextureManager::GetTexture("creditsScreen"));
 	isCredits = false;
 }
@@ -90,8 +90,8 @@ int StartScreen::Click(int x, int y) {
 //	//	FASTEST	//	//
 
 Fastest::Fastest() {
-	depart = TextBox(true, "", (SCREEN_WIDTH/4) - (BUTTON_WIDTH/2), SCREEN_HEIGHT/5);
-	arrive = TextBox(true, "", (3*SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2), SCREEN_HEIGHT / 5);
+	depart = TextBox(true, "", (SCREEN_WIDTH/4) - (BUTTON_WIDTH/2), BUTTON_HEIGHT/2);
+	arrive = TextBox(true, "", (3*SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2), BUTTON_HEIGHT / 2);
 }
 
 void Fastest::Draw(sf::RenderWindow& window) {
