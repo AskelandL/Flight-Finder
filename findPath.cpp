@@ -17,20 +17,17 @@ int Dijkstra(AdjacencyMatrix& graph, int from, int to) {
 			notVisited.insert(i);
 		}
 	}
-
+	//cout << "  checkpoint #2" << endl;
 	for (auto v : notVisited) {
-		for (int i = 0; i < graph.getMatrix()[from].size(); i++) {
-			if (graph.getMatrix()[from][i] == v) {
-				int tempDist = graph.getMatrix()[from][i];
-				distance[v] = tempDist;
-				previous[v] = from;
-				break;
-			}
+		if (graph.getMatrix()[from][v] != 0) {
+			int tempDist = graph.getMatrix()[from][v];
+			distance[v] = tempDist;
+			previous[v] = from;
 		}
 	}
-
+	//cout << "   checkpoint #3" << endl;
 	while (!notVisited.empty()) {
-		int minWeight = 9999999999;
+		int minWeight = INF;
 		int minVertex;
 		for (auto u : notVisited) {
 			if (distance[u] < minWeight) {
@@ -38,13 +35,13 @@ int Dijkstra(AdjacencyMatrix& graph, int from, int to) {
 				minWeight = distance[u];
 			}
 		}
-
+		//cout << "    checkpoint #4" << endl;
 		notVisited.erase(minVertex);
 		visited.insert(minVertex);
 
 		for (auto v : notVisited) {
 			for (int i = 0; i < graph.getMatrix()[minVertex].size(); i++) {
-				if (graph.getMatrix()[minVertex][i] == v) {
+				if (graph.getMatrix()[minVertex][i] != 0) {
 					if (distance[minVertex] + graph.getMatrix()[minVertex][i] < distance[v]) {
 						distance[v] = distance[minVertex] + graph.getMatrix()[minVertex][i];
 						previous[v] = minVertex;
@@ -53,6 +50,7 @@ int Dijkstra(AdjacencyMatrix& graph, int from, int to) {
 				}
 			}
 		}
+		//cout << "     checkpoint #5" << endl;
 	}
 
 	return distance[to];
