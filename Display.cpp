@@ -90,19 +90,21 @@ int StartScreen::Click(int x, int y) {
 //	//	FASTEST	//	//
 
 Fastest::Fastest() {
-	depart = TextBox(true, "", (SCREEN_WIDTH/4) - (BUTTON_WIDTH/2), BUTTON_HEIGHT/2);
-	arrive = TextBox(true, "", (3*SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2), BUTTON_HEIGHT / 2);
+	depart = TextBox(true, "", (SCREEN_WIDTH/4) - (BUTTON_WIDTH/2) - BUTTON_BORDER, BUTTON_HEIGHT/2);
+	arrive = TextBox(true, "", (SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), BUTTON_HEIGHT / 2);
+	exit = Button("creditsBtn", BUTTON_BORDER + (3*SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2), BUTTON_HEIGHT / 2);
 }
 
 void Fastest::Draw(sf::RenderWindow& window) {
 	depart.Draw(window);
 	arrive.Draw(window);
+	exit.Draw(window);
 }
 
 bool Fastest::Click(int x, int y) {
 	arrive.Click(x, y);
 	depart.Click(x, y);
-	return false;
+	return exit.isPressed(x,y);
 }
 
 void Fastest::Type(char letter) {

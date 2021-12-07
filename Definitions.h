@@ -5,6 +5,9 @@
 #define NODES 100 // number of nodes - will eventually be 100000 or however many we want
 #define NAME_LEN 4 // number of chars in terminal name
 
+// findPath
+#define INFINITY 9999999999
+
 // Display
 #define SCREEN_WIDTH 1600
 #define SCREEN_HEIGHT 800

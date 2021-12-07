@@ -25,7 +25,7 @@ class Fastest {
 	TextBox arrive;
 	//sf::Text deText;
 	//sf::Text arText;
-	//Button exit;
+	Button exit;
 public:
 	Fastest();
 	void Draw(sf::RenderWindow& window);
