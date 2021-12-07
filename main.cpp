@@ -12,6 +12,11 @@ int main() {
     AdjacencyMatrix myMatrix(NODES, NODES);
 
     for (int i = 0; i < NODES; i++) {
+        myMatrix.insertRoute(0, i, 13);
+        myMatrix.insertRoute(i, 1, 13);
+    }
+    myMatrix.insertRoute(1, 0, 13);
+    for (int i = 2; i < NODES; i++) {
         for (int j = 0; j < NODES; j++) {
             flightTime = Random::Int(1,9); 
             myMatrix.insertRoute(i, j, flightTime);
