@@ -14,6 +14,16 @@ AdjacencyMatrix::~AdjacencyMatrix()
 	delete[] myMatrix[];
 }
 
+Vector<vector<int>> AdjacencyMatrix::getMatrix()
+{
+	return myMatrix;
+}
+
+int AdjacencyMatrix::getVertices()
+{
+	return numVert;
+}
+
 void AdjacencyMatrix::insertRoute(int from, int to, int weight)
 {
 	myMatrix[from][to] = weight;
