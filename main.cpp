@@ -1,4 +1,4 @@
-#include "findPath.h"
+#include "findPath.cpp"
 #include "Random.h"
 #include "Display.h"
 #include "AdjacencyMatrix.h"
