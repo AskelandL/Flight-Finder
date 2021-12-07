@@ -7,14 +7,15 @@ class StartScreen
 {
 	sf::Sprite credits;
 	bool isCredits;
-	Button fastest;
-	Button visual;
+	Button fastestBtn;
+	Button visualBtn;
 	Button credBtn;
-	Button exit;
+	Button djik;
+	bool isDjik;
 public:
 	StartScreen();
 	void Draw(sf::RenderWindow& window, int score = -1);
-	bool Click(int x, int y);  // bool startScreen
+	int Click(int x, int y);  // 0 no change, 1 Fastest, 2 display
 };
 
 
@@ -22,6 +23,11 @@ public:
 class Fastest {
 	TextBox depart;
 	TextBox arrive;
+public:
+	Fastest();
+	void Draw(sf::RenderWindow& window);
+	bool Click(int x, int y);
+	void Type(char letter);
 };
 
 /* for fastest:

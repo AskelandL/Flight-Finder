@@ -48,4 +48,5 @@ int main() {
         window.display();
     }
 
+    return 1;
 }

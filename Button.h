@@ -2,18 +2,16 @@
 #include "Definitions.h"
 #include <string>
 #include "TextureManager.h"
-using namespace std;
 
 
 class Button {
 protected:
 	sf::Sprite pic;
-	int pos;
 	int x;
 	int y;
 public:
 	Button();
-	Button(int pos, string texture);
+	Button(string texture, int x, int y);
 	void setSprite(string texture);
 	void Draw(sf::RenderWindow& window);
 	bool isPressed(int x, int y);
@@ -22,27 +20,17 @@ public:
 // text box a la Plaque
 class TextBox : public Button {
 	bool interactive;
-	class Name {
-		sf::Sprite one;
-		sf::Sprite two;
-		sf::Sprite three;
-		sf::Sprite four;
-	public:
-		string name;
-		Name() {
-			name = "    ";
-		}
-		void Set(string name) { this->name = name; }
-		void Add(char i);
-		void Draw(sf::RenderWindow& window, string name);
-	};
-	Name nameDisplay;
+	bool pressed;
+	string name;
+	sf::Text text;
+	void SetText(string name);
 public:
-	TextBox() {
-		nameDisplay = Name();
-		interactive = false;
-	}
-	TextBox(bool interactive, string name);
-	void Draw(sf::RenderWindow& window, string name);
-	void Restart(string texture);
+	TextBox();
+	TextBox(bool interactive, string name, int x, int y);
+	void Draw(sf::RenderWindow& window);
+	void Press(bool down);
+	void Position(int x, int y);
+	bool Click(int x, int y);
+	bool isPressed();
+	void addText(char letter);
 };

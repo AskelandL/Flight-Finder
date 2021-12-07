@@ -1,12 +1,18 @@
 #pragma once
+
+
 // General
 #define NODES 100 // number of nodes - will eventually be 100000 or however many we want
-
+#define NAME_LEN 4 // number of chars in terminal name
 
 // Display
-#define SCREEN_WIDTH 1800
-#define SCREEN_HEIGHT 1000
+#define SCREEN_WIDTH 1600
+#define SCREEN_HEIGHT 800
 #define BACK_COLOR sf::Color::Cyan
-#define BUTTON_HEIGHT 600
+#define BUTTON_HEIGHT 300
+#define BUTTON_WIDTH 400
 #define LEFT_BORDER 200
-#define BUTTON_WIDTH 600
+
+
+#define FONT "bahnschrift"
+#define BUTTON_BORDER 100

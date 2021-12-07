@@ -1,5 +1,4 @@
 #include "Display.h"
-#include <iostream>
 
 //	//	 DISPLAY	//	//
 
@@ -14,52 +13,104 @@ void Display::Draw(sf::RenderWindow& window) {
 		start.Draw(window);
 	}
 	else if (isFastest) {
-		// draw fastest
+		fastest.Draw(window);
 	}
 }
 
 void Display::Click(int x, int y) {
-	cout << "you clicked!!" << endl;
+	if (isStart) {
+		if (start.Click(x,y) == 1) {
+			isFastest = true;
+			isStart = false;
+		}
+	}
+	else if (isFastest) {
+		if (fastest.Click(x, y)) {
+			isFastest = false;
+			isStart = true;
+		}
+	}
 }
 
 void Display::Type(char letter) {
-	cout << letter << endl;
+	if (isFastest) {
+		fastest.Type(letter);
+	}
 }
 
 //	//  STARTSCREEN  //	//
 
 StartScreen::StartScreen() {
-	fastest = Button(0, "fastestBtn");
-	visual = Button(2, "creditsBtn");
-	credBtn = Button(1, "displayBtn");
-	exit = Button(3, "exitBtn");
+	fastestBtn = Button("fastestBtn", (SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2), SCREEN_HEIGHT/2);
+	visualBtn = Button("displayBtn", (3*SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2), SCREEN_HEIGHT/2);
+	credBtn = Button("creditsBtn", (SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 3*SCREEN_HEIGHT / 4);
+	djik = Button("djikBtn", (SCREEN_WIDTH/2)-(BUTTON_WIDTH/2), SCREEN_HEIGHT/4);
 	credits.setTexture(TextureManager::GetTexture("creditsScreen"));
 	isCredits = false;
 }
 
-// return fastestGame
 void StartScreen::Draw(sf::RenderWindow& window, int score) {
 	if (isCredits) {
 		window.draw(credits);
 	}
 	else {
-		fastest.Draw(window);
+		fastestBtn.Draw(window);
 		credBtn.Draw(window);
-		visual.Draw(window);
-		exit.Draw(window);
+		visualBtn.Draw(window);
+		djik.Draw(window);
 	}
 }
 
-bool StartScreen::Click(int x, int y) {
+int StartScreen::Click(int x, int y) {
 	// find out if clicked a button, configure
+	// 0 no change, 1 Fastest, 2 display
 	if (isCredits) {
 		isCredits = false;
 	}
 	else if (credBtn.isPressed(x, y)) {
 		isCredits = true;
 	}
-	else if (fastest.isPressed(x, y)) {
-		return false;
+	else if (fastestBtn.isPressed(x, y)) {
+		// switch to fastest
+		return 1;
 	}
-	return true;
+	else if (djik.isPressed(x, y)) {
+		isDjik = !isDjik;
+		if (isDjik) {
+			djik.setSprite("djikBtn");
+		}
+		else {
+			djik.setSprite("notDjikBtn");
+		}
+	}
+	return 0;
+}
+
+
+//	//	FASTEST	//	//
+
+Fastest::Fastest() {
+	depart = TextBox(true, "", (SCREEN_WIDTH/4) - (BUTTON_WIDTH/2), SCREEN_HEIGHT/5);
+	arrive = TextBox(true, "", (3*SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2), SCREEN_HEIGHT / 5);
+}
+
+void Fastest::Draw(sf::RenderWindow& window) {
+	depart.Draw(window);
+	arrive.Draw(window);
+}
+
+bool Fastest::Click(int x, int y) {
+	arrive.Click(x, y);
+	depart.Click(x, y);
+	return false;
+}
+
+void Fastest::Type(char letter) {
+	// cycle through and see which text box is selected
+	if (depart.isPressed()) {
+		depart.addText(letter);
+	}
+	else if (arrive.isPressed()) {
+		arrive.addText(letter);
+	}
 }

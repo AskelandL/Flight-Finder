@@ -5,17 +5,18 @@
 using namespace std;
 
 class AdjacencyMatrix {
-    
-private:
-    int numVert;
-    int myMatrix[][];
+    // private variables etc
+    //testing push abilities
 
 public:
-    AdjacencyMatrix(int m, int n);
-    ~AdjacencyMatrix();
-    void insertRoute(int from, int to, int weight);
-    void removeRoute(int from, int to, int weight);
-    void displayMatrix();
-    bool isRoute(int from, int to);
+    class Iterator;
+    void insertEdge(int from, int to, int weight);
+    vector<int> getAdjacent(int vertex);
+
+    class Iterator{
+        // private variables etc
+    public:
+        Iterator(const AdjacencyMatrix& graph);
+        Iterator& operator++();
     };
 };
