@@ -18,13 +18,11 @@ public:
 	int Click(int x, int y);  // 0 no change, 1 Fastest, 2 display
 };
 
-
-// make a class for fastest and for visual too, then convert StartScreen to Game-equivalent? (or make overarching Display class)
 class Fastest {
 	TextBox depart;
 	TextBox arrive;
-	//sf::Text deText;
-	//sf::Text arText;
+	sf::Text deText;
+	sf::Text arrText;
 	Button exit;
 public:
 	Fastest();
@@ -32,15 +30,6 @@ public:
 	bool Click(int x, int y);
 	void Type(char letter);
 };
-
-/* for fastest:
-each text box has a bool if it is clicked (goes on when clicked, goes off when click outside)
-	L> If box is clicked, then if you type on keyboard
-		-put letter you typed into string variable (show on screen)
-			-don't forget about delete/clear ability
-		-alternate option: have 4 boxes and enter each one by one (pain) (don't do this)
-
-*/
 
 class Display {
 	bool isStart;

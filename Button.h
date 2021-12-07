@@ -34,3 +34,19 @@ public:
 	bool isPressed();
 	void addText(char letter);
 };
+
+// figure out how to make it "square" like a text box
+// or maybe we don't need to??
+//			~make a vector of "lines" to print out, and a left boundary (don't)
+class Texter {
+	int x;
+	int y;
+	string name;
+	sf::Text text;
+	void SetText(string name);
+public:
+	Texter();
+	Texter(string name, int x, int y);
+	void Draw(sf::RenderWindow& window);
+	void addText(string letters);
+};
