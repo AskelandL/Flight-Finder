@@ -1,4 +1,6 @@
 #include "AdjacencyMatrix.h"
+#include <iostream>
+using namespace std;
 
 AdjacencyMatrix::AdjacencyMatrix(int m, int n)
 {
@@ -8,13 +10,11 @@ AdjacencyMatrix::AdjacencyMatrix(int m, int n)
 
 AdjacencyMatrix::~AdjacencyMatrix()
 {
-	for (int i = 0; i < numVert; i++) {
-		delete myMatrix.at(i);
-	}
-	delete[] myMatrix[];
+	myMatrix.clear();
+	
 }
 
-Vector<vector<int>> AdjacencyMatrix::getMatrix()
+vector<vector<int>> AdjacencyMatrix::getMatrix()
 {
 	return myMatrix;
 }
@@ -38,10 +38,10 @@ void AdjacencyMatrix::displayMatrix()
 {
 
 	//displays entire matrix
-	cout << "Potential Routes include: "
+	cout << "Potential Routes include: ";
 		for (int i = 0; i < numVert; i++) {
 			for (int j = 0; j < numVert; j++) {
-				cout < myMatrix[i][j] << " ";
+				cout << myMatrix[i][j] << " ";
 			}
 			cout << "\n";
 		}
@@ -53,7 +53,7 @@ void AdjacencyMatrix::displayAirport(int from, int to ) {
 	for (int i = from;i < to; i++) {
 		cout << "airport" << i << " connects to airports: ";
 		for (int j = from; j < to; j++) {
-			if (myMatrix[i][j]) != 0 ) {
+			if (myMatrix[i][j] != 0 ) {
 			cout << j << " ";
 			}
 		}

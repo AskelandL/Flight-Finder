@@ -13,7 +13,7 @@ private:
 public:
     AdjacencyMatrix(int m, int n);
     ~AdjacencyMatrix();
-    Vector<vector<int>> getMatrix();
+    vector<vector<int>> getMatrix();
     int getVertices();
     void insertRoute(int from, int to, int weight);
     void removeRoute(int from, int to, int weight);
