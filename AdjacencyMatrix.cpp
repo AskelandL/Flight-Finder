@@ -17,13 +17,11 @@ AdjacencyMatrix::~AdjacencyMatrix()
 void AdjacencyMatrix::insertRoute(int from, int to, int weight)
 {
 	myMatrix[from][to] = weight;
-	myMatrix[to][from] = weight;
 }
 
 void AdjacencyMatrix::removeRoute(int from, int to, int weight)
 {
 	myMatrix[from][to] = 0;
-	myMatrix[to][from] = 0;
 }
 
 void AdjacencyMatrix::displayMatrix()
