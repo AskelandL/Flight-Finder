@@ -7,7 +7,7 @@ int Dijkstra(AdjacencyMatrix& graph, int from, int to) {
 	// declare vectors and sets
 	set<int> visited;
 	set<int> notVisited;
-	vector<int> distance(graph.getVertices(), 9999999999);
+	vector<int> distance(graph.getVertices(), INF);
 	vector<int> previous(graph.getVertices(), -1);
 
 	visited.insert(from);
@@ -58,7 +58,7 @@ int Dijkstra(AdjacencyMatrix& graph, int from, int to) {
 	return distance[to];
 }
 int BellmanFord(AdjacencyMatrix& graph, int from, int to) {
-	vector<int> distance(graph.getVertices(), 9999999999);
+	vector<int> distance(graph.getVertices(), INF);
 	vector<int> previous(graph.getVertices(), -1);
 	distance[from] = 0;
 	previous[from] = NULL;
