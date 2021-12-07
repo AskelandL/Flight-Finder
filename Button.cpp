@@ -138,3 +138,8 @@ void TextWrap::addText(string letters) {
 	name += letters;
 	SetText(name);
 }
+
+void TextBox::Position(int x, int y) {
+	this->x = x;
+	this->y = y;
+}

@@ -6,7 +6,7 @@
 #define NAME_LEN 4 // number of chars in terminal name
 
 // findPath
-#define INF 9999999999
+#define INF 9999999
 
 // Display
 #define SCREEN_WIDTH 1600

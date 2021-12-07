@@ -49,4 +49,5 @@ public:
 	TextWrap(string name, int x, int y);
 	void Draw(sf::RenderWindow& window);
 	void addText(string letters);
+	void Position(int x, int y);
 };

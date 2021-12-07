@@ -5,7 +5,7 @@ using namespace std;
 
 class StartScreen
 {
-	sf::Sprite credits;
+	vector<TextWrap> credits;
 	bool isCredits;
 	Button fastestBtn;
 	Button visualBtn;

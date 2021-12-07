@@ -45,13 +45,21 @@ StartScreen::StartScreen() {
 	visualBtn = Button("displayBtn", (3*SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2), SCREEN_HEIGHT/2);
 	credBtn = Button("creditsBtn", (SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 3*SCREEN_HEIGHT / 4);
 	djik = Button("djikBtn", (SCREEN_WIDTH/2)-(BUTTON_WIDTH/2), SCREEN_HEIGHT/2);
-	credits.setTexture(TextureManager::GetTexture("creditsScreen"));
+	credits.resize(5);
+	for (int i = 0; i < credits.size(); i++) {
+		// set text spacing
+		credits.at(i).Position(LEFT_BORDER, (SCREEN_HEIGHT / 6) + (i * TEXT_HEIGHT * 2));
+	}
+	credits.at(0).addText("project created by aldsflj");
+	credits.at(1).addText("asldfjkalsdjf");
 	isCredits = false;
 }
 
 void StartScreen::Draw(sf::RenderWindow& window, int score) {
 	if (isCredits) {
-		window.draw(credits);
+		for (TextWrap line : credits) {
+			line.Draw(window);
+		}
 	}
 	else {
 		fastestBtn.Draw(window);
