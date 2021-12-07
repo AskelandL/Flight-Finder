@@ -1,4 +1,6 @@
-int Dijkstra(AdjacencyMatrix graph, int from, int to) {
+#include "findPath.h"
+
+int Dijkstra(AdjacencyMatrix& graph, int from, int to) {
 	// declare vectors and sets
 	set<int> visited;
 	set<int> notVisited;
@@ -51,6 +53,24 @@ int Dijkstra(AdjacencyMatrix graph, int from, int to) {
 
 	return distance[to];
 }
-int BellmanFord(AdjacencyMatrix graph, int from, int to) {
-	return 0;
+int BellmanFord(AdjacencyMatrix& graph, int from, int to) {
+	vector<int> distance(graph.numVert, 9999999999);
+	vector<int> previous(graph.numVert, -1);
+	distance[from] = 0;
+	previous[from] = NULL;
+
+	for (int i = 0; i < graph.numVert; i++) {
+		for (int j = 0; j < graph.myMatrix[i].size(); j++) {
+			if (graph.myMatrix[i][j] != 0) {
+				int tempDist = distance[j] + graph.myMatrix[i][j];
+				if (tempDist < distance[i]) {
+					distance[i] = tempDist;
+					previous[i] = j;
+				}
+			}
+
+		}
+	}
+
+	return distance[to];
 }

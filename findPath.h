@@ -1,5 +1,9 @@
-// two algorithms:
+#pragma once
+#include <vector>
+#include <set>
+#include "AdjacencyMatrix.h"
 
+// two algorithms:
 	// Dijkstra's
 	// Bellman Ford's
 
