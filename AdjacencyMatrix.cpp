@@ -2,10 +2,10 @@
 #include <iostream>
 using namespace std;
 
-AdjacencyMatrix::AdjacencyMatrix(int m, int n)
+AdjacencyMatrix::AdjacencyMatrix(int nodes)
 {
-	myMatrix.resize(m, vector<int> (n, 0));
-	numVert = m;
+	myMatrix.resize(nodes, vector<int> (nodes, 0));
+	numVert = nodes;
 }
 
 AdjacencyMatrix::~AdjacencyMatrix()
@@ -14,7 +14,7 @@ AdjacencyMatrix::~AdjacencyMatrix()
 	
 }
 
-vector<vector<int>> AdjacencyMatrix::getMatrix()
+vector<vector<int>>& AdjacencyMatrix::getMatrix()
 {
 	return myMatrix;
 }
@@ -26,7 +26,7 @@ int AdjacencyMatrix::getVertices()
 
 void AdjacencyMatrix::insertRoute(int from, int to, int weight)
 {
-	myMatrix[from][to] = weight;
+	myMatrix.at(from).at(to) = weight;
 }
 
 void AdjacencyMatrix::removeRoute(int from, int to, int weight)
@@ -148,4 +148,15 @@ pair<int, vector<int>> AdjacencyMatrix::BellmanFord(int from, int to) {
 		path.push_back(previous[path.at(path.size() - 1)]);
 	}
 	return make_pair(distance[to], path);
+}
+
+string AdjacencyMatrix::convert(int node) {
+	return "";
+}
+
+int AdjacencyMatrix::convert(string node) {
+	//for (int i = 0; i < NAME_LEN; i++) {
+	//	//
+	//}
+	return 1;
 }

@@ -3,6 +3,7 @@
 #include <vector>
 #include <array>
 #include <set>
+#include <string>
 using namespace std;
 
 class AdjacencyMatrix {
@@ -12,9 +13,9 @@ private:
     vector<vector<int>> myMatrix;
 
 public:
-    AdjacencyMatrix(int m, int n);
+    AdjacencyMatrix(int nodes);
     ~AdjacencyMatrix();
-    vector<vector<int>> getMatrix();
+    vector<vector<int>>& getMatrix();
     int getVertices();
     void insertRoute(int from, int to, int weight);
     void removeRoute(int from, int to, int weight);
@@ -23,6 +24,6 @@ public:
     bool isRoute(int from, int to);
     pair<int, vector<int>> Dijkstra(int from, int to);
     pair<int, vector<int>> BellmanFord(int from, int to);
-    string hash(int node); // implement functions to convert between
-    int hash(string node);
+    string convert(int node); // implement functions to convert between
+    int convert(string node);
 };

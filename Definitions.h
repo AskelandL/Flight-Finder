@@ -1,9 +1,10 @@
 #pragma once
+#include <math.h>
 
 
 // General
-#define NODES 100 // number of nodes - will eventually be 100000 or however many we want
-#define NAME_LEN 4 // number of chars in terminal name
+#define NAME_LEN 3 // number of chars in terminal name
+#define NODES pow(26, NAME_LEN) // number of nodes - will eventually be 100000 or however many we want
 
 // findPath
 #define INF 9999999

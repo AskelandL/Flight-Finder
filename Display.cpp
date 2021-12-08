@@ -47,13 +47,13 @@ void Display::findPath() {
 	string nodes;
 	// implement the finding path for fastest
 	if (start.isDjikstra()) {
-		text->at(0).addon("Djikstra");
+		text->at(1).addon("Djikstra");
 		t = clock();
 		result = graph->Dijkstra(5, 6);
 		timeTaken = clock() - t;
 	}
 	else {
-		text->at(0).addon("BellmanFord");
+		text->at(1).addon("BellmanFord");
 		t = clock();
 		result = graph->BellmanFord(5, 6);
 		timeTaken = clock() - t;
@@ -63,10 +63,10 @@ void Display::findPath() {
 		nodes = nodes + to_string(result.second.at(i)) + "->";
 	}
 	nodes += to_string(6);
-	text->at(4).addon(nodes);
+	text->at(5).addon(nodes);
 	//add in text
-	text->at(1).addon(to_string(timeTaken) + " clicks");
-	text->at(3).addon(to_string(result.first) + " hours");
+	text->at(2).addon(to_string(timeTaken) + " clicks");
+	text->at(4).addon(to_string(result.first) + " hours");
 }
 
 //	//  STARTSCREEN  //	//
@@ -145,12 +145,13 @@ Fastest::Fastest() {
 	results.resize(6);
 	for (float i = 0; i < results.size(); i++) {
 		// set text spacing
-		results.at(i).Position(LEFT_BORDER, (BUTTON_HEIGHT*2) + ((i * TEXT_HEIGHT) * 1.5));
+		results.at(i).Position(LEFT_BORDER, (BUTTON_HEIGHT*2) - TEXT_HEIGHT + ((i * TEXT_HEIGHT) * 1.5));
 	}
-	results.at(0).addText("Algorithm Used: ");
-	results.at(1).addText("Time Taken: ");
-	results.at(3).addText("Flight Time: ");
-	results.at(4).addText("Route: ");
+	results.at(0).addText("Do not use characters STUVWXYZ");
+	results.at(1).addText("Algorithm Used: ");
+	results.at(2).addText("Time Taken: ");
+	results.at(4).addText("Flight Time: ");
+	results.at(5).addText("Route: ");
 }
 
 void Fastest::Draw(sf::RenderWindow& window) {
