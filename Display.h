@@ -5,8 +5,7 @@
 #include <time.h>
 using namespace std;
 
-class StartScreen
-{
+class StartScreen {
 	vector<TextWrap> credits;
 	bool isCredits;
 	Button fastestBtn;
@@ -36,6 +35,8 @@ public:
 	bool Type(char letter);
 	vector<TextWrap>* getResults();
 };
+
+
 
 class Display {
 	bool isStart;

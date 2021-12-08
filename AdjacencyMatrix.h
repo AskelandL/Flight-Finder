@@ -23,4 +23,6 @@ public:
     bool isRoute(int from, int to);
     pair<int, vector<int>> Dijkstra(int from, int to);
     pair<int, vector<int>> BellmanFord(int from, int to);
+    string hash(int node); // implement functions to convert between
+    int hash(string node);
 };
