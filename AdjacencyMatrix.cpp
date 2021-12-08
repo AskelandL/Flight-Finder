@@ -72,4 +72,80 @@ bool AdjacencyMatrix::isRoute(int from, int to)
 	}
 }
 
+pair<int, vector<int>> AdjacencyMatrix::Dijkstra(int from, int to) {
+	// declare vectors and sets
+	set<int> visited;
+	set<int> notVisited;
+	vector<int> distance(getVertices(), INF);
+	vector<int> previous(getVertices(), -1);
 
+	visited.insert(from);
+	distance[from] = 0;
+	for (int i = 0; i < getVertices(); i++) {
+		if (i != from) {
+			notVisited.insert(i);
+		}
+	}
+	for (auto v : notVisited) {
+		if (getMatrix()[from][v] != 0) {
+			int tempDist = getMatrix()[from][v];
+			distance[v] = tempDist;
+			previous[v] = from;
+		}
+	}
+	while (!notVisited.empty()) {
+		int minWeight = INF;
+		int minVertex;
+		for (auto u : notVisited) {
+			if (distance[u] < minWeight) {
+				minVertex = u;
+				minWeight = distance[u];
+			}
+		}
+		notVisited.erase(minVertex);
+		visited.insert(minVertex);
+
+		for (auto v : notVisited) {
+			for (int i = 0; i < getMatrix()[minVertex].size(); i++) {
+				if (getMatrix()[minVertex][i] != 0) {
+					if (distance[minVertex] + getMatrix()[minVertex][i] < distance[v]) {
+						distance[v] = distance[minVertex] + getMatrix()[minVertex][i];
+						previous[v] = minVertex;
+					}
+					break;
+				}
+			}
+		}
+	}
+	vector<int> path; // to -> from
+	path.push_back(previous[to]);
+	while (path.at(path.size() - 1) != from && path.at(path.size() - 1) != -1) {
+		path.push_back(previous[path.at(path.size() - 1)]);
+	}
+	return make_pair(distance[to], path);
+}
+pair<int, vector<int>> AdjacencyMatrix::BellmanFord(int from, int to) {
+	vector<int> distance(getVertices(), INF);
+	vector<int> previous(getVertices(), -1);
+	distance[from] = 0;
+	previous[from] = NULL;
+
+	for (int i = 0; i < getVertices(); i++) {
+		for (int j = 0; j < getMatrix()[i].size(); j++) {
+			if (getMatrix()[i][j] != 0) {
+				int tempDist = distance[j] + getMatrix()[i][j];
+				if (tempDist < distance[i]) {
+					distance[i] = tempDist;
+					previous[i] = j;
+				}
+			}
+		}
+	}
+
+	vector<int> path; // to -> from
+	path.push_back(previous[to]);
+	while (path.at(path.size() - 1) != from && path.at(path.size() - 1) != -1) {
+		path.push_back(previous[path.at(path.size() - 1)]);
+	}
+	return make_pair(distance[to], path);
+}

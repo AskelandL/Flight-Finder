@@ -33,6 +33,7 @@ public:
 	bool Click(int x, int y);
 	bool isPressed();
 	void addText(char letter);
+	bool isComplete();
 };
 
 // figure out how to make it "square" like a text box
@@ -42,6 +43,7 @@ class TextWrap {
 	int x;
 	int y;
 	string name;
+	string add;
 	sf::Text text;
 	void SetText(string name);
 public:
@@ -49,5 +51,6 @@ public:
 	TextWrap(string name, int x, int y);
 	void Draw(sf::RenderWindow& window);
 	void addText(string letters);
+	void addon(string add);
 	void Position(int x, int y);
 };

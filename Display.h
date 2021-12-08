@@ -1,6 +1,8 @@
 #pragma once
 #include "Button.h"
+#include "AdjacencyMatrix.h"
 #include <SFML/Window/Keyboard.hpp>
+#include <time.h>
 using namespace std;
 
 class StartScreen
@@ -16,6 +18,7 @@ public:
 	StartScreen();
 	void Draw(sf::RenderWindow& window, int score = -1);
 	int Click(int x, int y);  // 0 no change, 1 Fastest, 2 display
+	bool& isDjikstra();
 };
 
 
@@ -25,11 +28,13 @@ class Fastest {
 	TextWrap deText;
 	TextWrap arrText;
 	Button exit;
+	vector<TextWrap> results;
 public:
 	Fastest();
 	void Draw(sf::RenderWindow& window);
 	bool Click(int x, int y);
-	void Type(char letter);
+	bool Type(char letter);
+	vector<TextWrap>* getResults();
 };
 
 class Display {
@@ -38,9 +43,11 @@ class Display {
 	bool isFastest;
 	Fastest fastest;
 	bool isVisual;
+	AdjacencyMatrix* graph;
 public:
-	Display();
+	Display(AdjacencyMatrix* graph);
 	void Draw(sf::RenderWindow& window); // send draw to respective
 	void Click(int x, int y); // send click to respective
 	void Type(char letter); // if text box is selected, type a character
+	void findPath();
 };

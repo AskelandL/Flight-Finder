@@ -2,6 +2,7 @@
 #include "Definitions.h"
 #include <vector>
 #include <array>
+#include <set>
 using namespace std;
 
 class AdjacencyMatrix {
@@ -20,4 +21,6 @@ public:
     void displayMatrix();
     void displayAirport(int from, int to);
     bool isRoute(int from, int to);
+    pair<int, vector<int>> Dijkstra(int from, int to);
+    pair<int, vector<int>> BellmanFord(int from, int to);
 };

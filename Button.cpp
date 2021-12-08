@@ -106,12 +106,19 @@ void TextBox::addText(char letter) {
 	SetText(name);
 }
 
+bool TextBox::isComplete() {
+	if (name.size() == NAME_LEN) {
+		return true;
+	}
+	return false;
+}
+
 // TEXTWRAP
 
 void TextWrap::SetText(string name) {
 	this->name = name;
 	text.setFont(TextureManager::GetFont(FONT));
-	text.setString(name);
+	text.setString(name + add);
 	text.setCharacterSize(TEXT_HEIGHT); // in pixels, not points!
 	text.setFillColor(sf::Color::White);
 	text.setStyle(sf::Text::Bold);
@@ -119,6 +126,7 @@ void TextWrap::SetText(string name) {
 
 TextWrap::TextWrap() {
 	name = "";
+	add = "";
 	x = 0;
 	y = 0;
 }
@@ -126,6 +134,7 @@ TextWrap::TextWrap() {
 TextWrap::TextWrap(string name, int x, int y) {
 	this->x = x;
 	this->y = y;
+	add = "";
 	SetText(name);
 	text.setPosition(x, y);
 }
@@ -135,11 +144,17 @@ void TextWrap::Draw(sf::RenderWindow& window) {
 }
 
 void TextWrap::addText(string letters) {
-	name += letters;
+	name = name + letters;
 	SetText(name);
 }
 
-void TextBox::Position(int x, int y) {
+void TextWrap::addon(string add) {
+	this->add = add;
+	SetText(name);
+}
+
+void TextWrap::Position(int x, int y) {
 	this->x = x;
 	this->y = y;
+	text.setPosition(x, y);
 }

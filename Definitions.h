@@ -19,4 +19,4 @@
 
 #define FONT "bahnschrift"
 #define BUTTON_BORDER 50
-#define TEXT_HEIGHT 50
+#define TEXT_HEIGHT 50.0

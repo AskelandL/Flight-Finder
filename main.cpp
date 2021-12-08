@@ -1,7 +1,7 @@
-#include "findPath.cpp"
 #include "Random.h"
 #include "Display.h"
 #include "AdjacencyMatrix.h"
+#include <iostream>
 
 // main file where everything is tied together
 
@@ -25,7 +25,7 @@ int main() {
 
     // call Display
     sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Flight Finder");
-    Display d = Display(); // should take in AdjacencyMatrix
+    Display d = Display(&myMatrix); // should take in AdjacencyMatrix
 
     while (window.isOpen())
     {
