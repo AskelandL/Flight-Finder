@@ -91,9 +91,9 @@ StartScreen::StartScreen() {
 	credits.at(1).addText("Morgan Askeland");
 	credits.at(2).addText("Gabrielle Cannella");
 	credits.at(3).addText("Tristan McLain");
-	credits.at(4).addText("");
-	credits.at(5).addText("Finds the shortest path between 100,000 fictional");
-	credits.at(6).addText("airports with a choice of two algorithms.");
+	credits.at(4).addText("Random, TextureManager classes from COP3503");
+	credits.at(6).addText("Finds the shortest path between 100,000 fictional");
+	credits.at(7).addText("airports with a choice of two algorithms.");
 	isCredits = false;
 	header.setTexture(TextureManager::GetTexture("headerPic"));
 	header.setPosition((SCREEN_WIDTH/2) - (HEADER_WIDTH / 2), BUTTON_BORDER);

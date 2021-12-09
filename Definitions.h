@@ -3,7 +3,7 @@
 
 
 // General
-#define NAME_LEN 3 // number of chars in terminal name
+#define NAME_LEN 2 // number of chars in terminal name
 #define NODES pow(26, NAME_LEN) // number of nodes - will eventually be 100000 or however many we want
 
 // findPath
