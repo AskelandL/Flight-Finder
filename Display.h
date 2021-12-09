@@ -9,10 +9,10 @@ class StartScreen {
 	vector<TextWrap> credits;
 	bool isCredits;
 	Button fastestBtn;
-	Button visualBtn;
 	Button credBtn;
 	Button djik;
 	bool isDjik;
+	sf::Sprite header;
 public:
 	StartScreen();
 	void Draw(sf::RenderWindow& window, int score = -1);

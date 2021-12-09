@@ -16,6 +16,8 @@
 #define BUTTON_HEIGHT 200
 #define BUTTON_WIDTH 400
 #define LEFT_BORDER 200
+#define HEADER_WIDTH 1600
+#define HEADER_HEIGHT 400
 
 
 #define FONT "bahnschrift"
