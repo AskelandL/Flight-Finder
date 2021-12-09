@@ -87,10 +87,10 @@ pair<int, vector<int>> AdjacencyMatrix::Dijkstra(int from, int to) {
 		}
 	}
 	for (auto v : notVisited) {
+		previous[v] = from;
 		if (getMatrix()[from][v] != 0) {
 			int tempDist = getMatrix()[from][v];
 			distance[v] = tempDist;
-			previous[v] = from;
 		}
 	}
 	while (!notVisited.empty()) {
@@ -106,17 +106,15 @@ pair<int, vector<int>> AdjacencyMatrix::Dijkstra(int from, int to) {
 		visited.insert(minVertex);
 
 		for (auto v : notVisited) {
-			for (int i = 0; i < getMatrix()[minVertex].size(); i++) {
-				if (getMatrix()[minVertex][i] != 0) {
-					if (distance[minVertex] + getMatrix()[minVertex][i] < distance[v]) {
-						distance[v] = distance[minVertex] + getMatrix()[minVertex][i];
-						previous[v] = minVertex;
-					}
-					break;
+			if (getMatrix()[minVertex][v] != 0) {
+				if (distance[minVertex] + getMatrix()[minVertex][v] < distance[v]) {
+					distance[v] = distance[minVertex] + getMatrix()[minVertex][v];
+					previous[v] = minVertex;
 				}
 			}
 		}
 	}
+
 	vector<int> path; // to -> from
 	path.push_back(previous[to]);
 	while (path.at(path.size() - 1) != from && path.at(path.size() - 1) != -1) {
@@ -128,15 +126,17 @@ pair<int, vector<int>> AdjacencyMatrix::BellmanFord(int from, int to) {
 	vector<int> distance(getVertices(), INF);
 	vector<int> previous(getVertices(), -1);
 	distance[from] = 0;
-	previous[from] = NULL;
+	previous[from] = -1;
 
-	for (int i = 0; i < getVertices(); i++) {
-		for (int j = 0; j < getMatrix()[i].size(); j++) {
-			if (getMatrix()[i][j] != 0) {
-				int tempDist = distance[j] + getMatrix()[i][j];
-				if (tempDist < distance[i]) {
-					distance[i] = tempDist;
-					previous[i] = j;
+	for (int i = 0; i < getVertices() - 1; i++) {
+		for (int u = 0; u < getMatrix().size(); u++) {
+			for (int v = 0; v < getMatrix()[u].size(); v++) {
+				if (getMatrix()[u][v] != 0) {
+					int tempDist = distance[u] + getMatrix()[u][v];
+					if (tempDist < distance[v]) {
+						distance[v] = tempDist;
+						previous[v] = u;
+					}
 				}
 			}
 		}
