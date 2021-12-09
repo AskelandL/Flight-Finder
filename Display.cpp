@@ -79,9 +79,9 @@ void Display::findPath() {
 //	//  STARTSCREEN  //	//
 
 StartScreen::StartScreen() {
-	fastestBtn = Button("fastestBtn", (SCREEN_WIDTH / 2) - BUTTON_WIDTH - (BUTTON_BORDER/2), (SCREEN_HEIGHT / 2) + BUTTON_HEIGHT + (BUTTON_BORDER / 2));
-	credBtn = Button("creditsBtn", (SCREEN_WIDTH/2) + (BUTTON_BORDER / 2), (SCREEN_HEIGHT / 2) + BUTTON_HEIGHT + (BUTTON_BORDER / 2));
-	djik = Button("djikBtn", (SCREEN_WIDTH/2) - (BUTTON_WIDTH/2), (SCREEN_HEIGHT/2) + (BUTTON_BORDER/2));
+	fastestBtn = Button("fastestBtn", (SCREEN_WIDTH / 2) - BUTTON_WIDTH - (BUTTON_BORDER/2), (SCREEN_HEIGHT / 2) + BUTTON_HEIGHT - (BUTTON_BORDER / 2));
+	credBtn = Button("creditsBtn", (SCREEN_WIDTH/2) + (BUTTON_BORDER / 2), (SCREEN_HEIGHT / 2) + BUTTON_HEIGHT - (BUTTON_BORDER / 2));
+	djik = Button("djikBtn", (SCREEN_WIDTH/2) - (BUTTON_WIDTH/2), (SCREEN_HEIGHT/2) - (BUTTON_BORDER/2));
 	credits.resize(9);
 	for (float i = 0; i < credits.size(); i++) {
 		// set text spacing
