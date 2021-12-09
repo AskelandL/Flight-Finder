@@ -97,7 +97,7 @@ bool TextBox::isPressed() {
 }
 
 void TextBox::addText(char letter) {
-	if (name.size() < NAME_LEN && isalpha(letter + 65)) {
+	if (name.size() < NAME_LEN && isupper(letter + 65)) {
 		name = name + (char)(letter + 65);
 	}
 	else if (letter == sf::Keyboard::Backspace && name.size() > 0) {
@@ -111,6 +111,10 @@ bool TextBox::isComplete() {
 		return true;
 	}
 	return false;
+}
+
+string TextBox::getText() {
+	return name;
 }
 
 // TEXTWRAP

@@ -1,4 +1,5 @@
 #include "Display.h"
+#include <iostream>
 
 //	//	 DISPLAY	//	//
 
@@ -44,28 +45,34 @@ void Display::findPath() {
 	clock_t t;
 	float timeTaken;
 	pair<int, vector<int>> result;
-	string nodes;
+	string nodes = "";
+	int from = graph->convert(fastest.getCommands().first);
+	int to = graph->convert(fastest.getCommands().second);
 	// implement the finding path for fastest
 	if (start.isDjikstra()) {
 		text->at(1).addon("Djikstra");
 		t = clock();
-		result = graph->Dijkstra(5, 6);
+		result = graph->Dijkstra(from, to);
 		timeTaken = clock() - t;
 	}
 	else {
 		text->at(1).addon("BellmanFord");
 		t = clock();
-		result = graph->BellmanFord(5, 6);
+		result = graph->BellmanFord(from, to);
 		timeTaken = clock() - t;
 	}
 	// path
-	for (int i = result.second.size() - 1; i >= 0; i--) {
-		nodes = nodes + to_string(result.second.at(i)) + "->";
+	nodes += fastest.getCommands().second;
+	for (int i = 0; i < result.second.size(); i++) {
+		if (result.second.at(i) == -1) {
+			nodes += "->" + fastest.getCommands().first;
+			break;
+		}
+		nodes += "->" + graph->convert(result.second.at(i));
 	}
-	nodes += to_string(6);
 	text->at(5).addon(nodes);
 	//add in text
-	text->at(2).addon(to_string(timeTaken) + " clicks");
+	text->at(2).addon(to_string(timeTaken / CLOCKS_PER_SEC) + " seconds");
 	text->at(4).addon(to_string(result.first) + " hours");
 }
 
@@ -145,11 +152,13 @@ Fastest::Fastest() {
 	results.resize(6);
 	for (float i = 0; i < results.size(); i++) {
 		// set text spacing
-		results.at(i).Position(LEFT_BORDER, (BUTTON_HEIGHT*2) - TEXT_HEIGHT + ((i * TEXT_HEIGHT) * 1.5));
+		results.at(i).Position((SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2) - BUTTON_BORDER, (BUTTON_HEIGHT*2) - TEXT_HEIGHT + ((i * TEXT_HEIGHT) * 1.5));
 	}
-	results.at(0).addText("Do not use characters STUVWXYZ");
+	results.at(0).addText("Airports are ");
+	results.at(0).addon(to_string(NAME_LEN) + " letters. Please wait once text is entered.");
 	results.at(1).addText("Algorithm Used: ");
 	results.at(2).addText("Time Taken: ");
+	results.at(3).addText("");
 	results.at(4).addText("Flight Time: ");
 	results.at(5).addText("Route: ");
 }
@@ -182,9 +191,14 @@ bool Fastest::Type(char letter) {
 	if (arrive.isComplete() && depart.isComplete()) {
 		return true;
 	}
+	results.at(3).addon("");
 	return false;
 }
 
 vector<TextWrap>* Fastest::getResults() {
 	return &results;
+}
+
+pair<string, string> Fastest::getCommands() {
+	return make_pair(arrive.getText(), depart.getText());
 }

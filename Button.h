@@ -34,6 +34,7 @@ public:
 	bool isPressed();
 	void addText(char letter);
 	bool isComplete();
+	string getText();
 };
 
 // figure out how to make it "square" like a text box

@@ -151,12 +151,23 @@ pair<int, vector<int>> AdjacencyMatrix::BellmanFord(int from, int to) {
 }
 
 string AdjacencyMatrix::convert(int node) {
-	return "";
+	string result = "";
+	if (node > NODES) {
+		cout << "too big! " << node << endl;
+		return "ZZZ";
+	}
+	for (int i = 0; i < NAME_LEN; i++) {
+		result += (node % 26) + (int)'A';
+		node /= 26;
+	}
+	return result;
 }
 
 int AdjacencyMatrix::convert(string node) {
-	//for (int i = 0; i < NAME_LEN; i++) {
-	//	//
-	//}
-	return 1;
+	// assumes input is correct (node of length NAME_LEN, only alpha)
+	int result = 0;
+	for (int i = 0; i < NAME_LEN; i++) {
+		result += (node.at(i) - 'A') * pow(26, i);
+	}
+	return result;
 }

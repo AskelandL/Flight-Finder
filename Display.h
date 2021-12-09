@@ -34,6 +34,7 @@ public:
 	bool Click(int x, int y);
 	bool Type(char letter);
 	vector<TextWrap>* getResults();
+	pair<string, string> getCommands();
 };
 
 
