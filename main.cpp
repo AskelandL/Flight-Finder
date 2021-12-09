@@ -20,7 +20,10 @@ int main() {
     myMatrix.insertRoute(1, 0, 13);
     for (int i = 2; i < NODES; i++) {
         for (int j = 0; j < NODES; j++) {
-            flightTime = Random::Int(1,9); 
+            flightTime = 0;
+            if (Random::Int(0, 1)) {
+                flightTime = Random::Int(0, 9);
+            }
             myMatrix.insertRoute(i, j, flightTime);
         }
         if (i % 100 == 0) {
